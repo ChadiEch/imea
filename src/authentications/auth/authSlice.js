@@ -2,13 +2,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Update the API URL to match the backend server's address
 export const signup = createAsyncThunk('auth/signup', async (userData) => {
   const response = await axios.post('http://localhost:5000/auth/signup', userData); // Corrected URL
   return response.data;
 });
 
-// Async thunk for login
 export const login = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {

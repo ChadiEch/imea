@@ -21,7 +21,7 @@ body{
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 300px;
-  max-height: 205px; /* Fixed height for all cards */
+  max-height: 205px; 
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -35,36 +35,36 @@ body{
 }
 
 .card-content {
-  flex-grow: 1; /* Allow content to fill available space */
+  flex-grow: 1; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute space between text and read-more link */
+  justify-content: space-between; 
 }
 
 .card p {
   color: #777;
   margin-bottom: 10px;
-  max-width: 100%; /* Ensure it doesn’t exceed the card width */
+  max-width: 100%; 
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .read-more {
-  color: #007bff; /* Blue color for the "Read more" link */
+  color: #007bff; 
   cursor: pointer;
   text-decoration: underline;
-  align-self: flex-start; /* Align the "Read more" link to the left */
+  align-self: flex-start; 
 }
 
 .read-more:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3; 
 }
 
 .card-footer {
   text-align: center;
   margin-top: 10px;
-  flex-shrink: 0; /* Ensure footer stays at the bottom */
+  flex-shrink: 0;
 }

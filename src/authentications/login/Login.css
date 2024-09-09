@@ -1,7 +1,7 @@
-/* Login.module.css or Login.css */
+
 .container {
   max-width: 400px;
-  margin: 80px auto 0; /* Added margin from top to create space for the back button */
+  margin: 80px auto 0; 
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -10,7 +10,7 @@
 }
 
 .back-button {
-  margin-bottom: 20px; /* Space between the button and the container */
+  margin-bottom: 20px; 
 }
 
 .back-button button {
@@ -51,8 +51,8 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  width: 100%; /* Makes input full width */
-  box-sizing: border-box; /* Ensures padding is included in width */
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
 button {

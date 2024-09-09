@@ -7,19 +7,19 @@ const Dashboard = () => {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null); // Track the selected category for filtering
+  const [selectedCategory, setSelectedCategory] = useState(null); 
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState('');
-  const [openDialog, setOpenDialog] = useState(false); // State to control the Dialog
-  const [selectedItem, setSelectedItem] = useState(null); // Track which item is selected
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null); 
   const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem('userId'); // Check if user is authenticated
+  const isAuthenticated = !!localStorage.getItem('userId'); 
 
   const fetchItems = async () => {
     try {
       const response = await axios.get('http://localhost:5000/items');
       setItems(response.data);
-      setFilteredItems(response.data); // Start by showing all items
+      setFilteredItems(response.data); 
     } catch (error) {
       console.error('Error fetching items', error);
     }
@@ -46,7 +46,7 @@ const Dashboard = () => {
       await axios.delete(`http://localhost:5000/items/${itemId}`, {
         headers: { 'user-id': userId },
       });
-      fetchItems(); // Refresh items
+      fetchItems(); 
     } catch (error) {
       console.error('Error deleting item', error);
     }
@@ -54,11 +54,9 @@ const Dashboard = () => {
 
   const handleCategoryClick = (categoryId) => {
     if (selectedCategory === categoryId) {
-      // Reset to show all items if the same category is clicked again
       setFilteredItems(items);
       setSelectedCategory(null);
     } else {
-      // Filter items by selected category
       const filtered = items.filter((item) => item.categoryId === categoryId);
       setFilteredItems(filtered);
       setSelectedCategory(categoryId);
@@ -73,19 +71,18 @@ const Dashboard = () => {
       setUserName(storedUserName);
     }
     fetchItems();
-    fetchCategories(); // Fetch categories
+    fetchCategories(); 
   }, []);
 
-  // Handle opening the dialog
   const handleOpenDialog = (item) => {
-    setSelectedItem(item); // Set the selected item
-    setOpenDialog(true); // Open the dialog
+    setSelectedItem(item); 
+    setOpenDialog(true); 
   };
 
-  // Handle closing the dialog
+  
   const handleCloseDialog = () => {
-    setOpenDialog(false); // Close the dialog
-    setSelectedItem(null); // Clear the selected item
+    setOpenDialog(false); 
+    setSelectedItem(null); 
   };
 
   return (
@@ -94,7 +91,7 @@ const Dashboard = () => {
         Welcome, {userName}
       </Typography>
 
-      {/* Category Filter Buttons */}
+      
       <Box mb={2}>
         <Button
           variant={!selectedCategory ? 'contained' : 'outlined'}
@@ -133,12 +130,10 @@ const Dashboard = () => {
               <CardContent>
                 <Typography variant="h5">{item.title}</Typography>
 
-                {/* Description: truncated to 2 lines */}
                 <Typography variant="body2">
                   {item.description.substring(0, 100)}...
                 </Typography>
 
-                {/* Read more button to open the dialog */}
                 <Button
                   variant="text"
                   color="primary"
@@ -177,7 +172,6 @@ const Dashboard = () => {
         ))}
       </Grid>
 
-      {/* Dialog for showing full description */}
       {selectedItem && (
         <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="sm" fullWidth>
           <DialogTitle>{selectedItem.title}</DialogTitle>

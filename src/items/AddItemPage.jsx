@@ -12,7 +12,6 @@ const AddItemPage = () => {
   const isAuthenticated = !!localStorage.getItem('userId');
 
   useEffect(() => {
-    // Fetch categories from the backend
     const fetchCategories = async () => {
       try {
         const response = await axios.get('http://localhost:5000/items/categories');

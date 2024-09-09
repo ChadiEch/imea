@@ -1,6 +1,4 @@
-/* src/App.css */
 
-/* General body styling */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -12,7 +10,6 @@ body {
   height: 100vh;
 }
 
-/* Styling for the container */
 .container {
   background-color: #fff;
   padding: 20px;
@@ -20,20 +17,18 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
-  text-align: center;  /* Center the text inside the container */
+  text-align: center;  
 }
 
-/* Styling for headings */
 h1, h2 {
   color: #333;
   margin-bottom: 20px;
 }
 
-/* Styling for links */
 a {
   color: #007bff;
   text-decoration: none;
-  margin: 0 10px;  /* Add spacing between the links */
+  margin: 0 10px;  
 }
 
 a:hover {

@@ -14,18 +14,16 @@ const EditItemPage = () => {
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     if (!userId) {
-      navigate('/login');  // Redirect to login if not authenticated
+      navigate('/login');  
     }
 
     const fetchItemAndCategories = async () => {
       try {
-        // Fetch the item
         const itemResponse = await axios.get(`http://localhost:5000/items/${id}`);
         setTitle(itemResponse.data.title);
         setDescription(itemResponse.data.description);
         setSelectedCategory(itemResponse.data.categoryId);
 
-        // Fetch the categories
         const categoriesResponse = await axios.get('http://localhost:5000/items/categories');
         setCategories(categoriesResponse.data);
       } catch (error) {
@@ -49,7 +47,7 @@ const EditItemPage = () => {
       await axios.put(`http://localhost:5000/items/${id}`, {
         title,
         description,
-        categoryId: selectedCategory,  // Send the selected category
+        categoryId: selectedCategory, 
       }, {
         headers: { 'user-id': userId },
       });

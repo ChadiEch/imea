@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signup } from '../auth/authSlice'; // Adjust path as needed
+import { signup } from '../auth/authSlice'; 
 
 const SignupPage = () => {
   const dispatch = useDispatch();
@@ -13,27 +13,23 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message before attempting signup
+    setError(''); 
 
     try {
       const resultAction = await dispatch(signup({ email, password, name }));
       
       if (signup.fulfilled.match(resultAction)) {
-        // Redirect to login page after successful sign-up
         navigate('/login');
       } else {
-        // Display error message from payload if sign-up failed
         setError(resultAction.payload?.message || 'Sign-up failed. Please try again.');
       }
     } catch (err) {
-      // Set a generic error message if an exception occurs
       setError('Sign-up failed. Please try again.');
     }
   };
 
   return (
     <div className='container'>
-      {/* Back to Home button */}
       <div className="back-button">
         <button onClick={() => navigate('/')}>Back to Home</button>
       </div>
