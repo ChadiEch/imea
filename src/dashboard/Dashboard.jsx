@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Container, Grid, Card, CardContent, Typography, Button, Box, Dialog, DialogContent, DialogTitle, DialogActions } from '@mui/material';
 import './Dashboard.css';
+
 const Dashboard = () => {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -85,13 +86,17 @@ const Dashboard = () => {
     setSelectedItem(null); 
   };
 
+  const handleLogout = () => {
+    localStorage.clear(); // Clear localStorage to log out the user
+    navigate('/login'); // Redirect to the login page
+  };
+
   return (
     <Container className='container'>
       <Typography variant="h4" gutterBottom>
         Welcome, {userName}
       </Typography>
 
-      
       <Box mb={2}>
         <Button
           variant={!selectedCategory ? 'contained' : 'outlined'}
@@ -114,9 +119,14 @@ const Dashboard = () => {
       </Box>
 
       {isAuthenticated ? (
-        <Button variant="contained" color="primary" onClick={() => navigate('/add-item')}>
-          Add New Item
-        </Button>
+        <Box>
+          <Button variant="contained" color="primary" onClick={() => navigate('/add-item')} style={{ marginRight: '10px' }}>
+            Add New Item
+          </Button>
+          <Button variant="contained" color="secondary" onClick={handleLogout}>
+            Logout
+          </Button>
+        </Box>
       ) : (
         <Button variant="contained" color="secondary" onClick={() => navigate('/login')}>
           Login
